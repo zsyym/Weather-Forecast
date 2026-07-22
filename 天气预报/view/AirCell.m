@@ -13,7 +13,14 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.contentView.layer.cornerRadius = 15;
-        
+        UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleSystemUltraThinMaterialDark];
+        self.glassView = [[UIVisualEffectView alloc] initWithEffect:effect];
+        self.glassView.layer.cornerRadius = 15;
+        self.glassView.clipsToBounds = YES;
+        [self.contentView addSubview:self.glassView];
+        [self.glassView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.contentView);
+        }];
         self.aqiIcon = [[UIImageView alloc] init];
         self.levelLabel = [[UILabel alloc] init];
         self.levelLabel.textColor = [UIColor whiteColor];
@@ -33,7 +40,7 @@
         UIStackView* titleStack = [[UIStackView alloc] initWithArrangedSubviews:@[self.aqiIcon, self.levelLabel]];
         titleStack.axis = UILayoutConstraintAxisHorizontal;
         titleStack.spacing = 10;
-        [self.contentView addSubview:titleStack];
+        [self.glassView.contentView addSubview:titleStack];
         [titleStack mas_makeConstraints: ^(MASConstraintMaker *make) {
             make.top.equalTo(self.contentView).offset(10);
             make.left.equalTo(self.contentView).offset(10);
@@ -53,7 +60,7 @@
         UIStackView *mainStack = [[UIStackView alloc] initWithArrangedSubviews:@[row1, row2, row3]];
         mainStack.axis = UILayoutConstraintAxisVertical;
         mainStack.spacing = 15;
-        [self.contentView addSubview:mainStack];
+        [self.glassView.contentView addSubview:mainStack];
         [mainStack mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(titleStack.mas_bottom).offset(10);
             make.left.equalTo(self.contentView).offset(10);

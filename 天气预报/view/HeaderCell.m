@@ -19,7 +19,7 @@
         [self.contentView addSubview:self.cityName];
         [self.cityName mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.contentView);
-            make.top.equalTo(self.contentView).offset(10);
+            make.top.equalTo(self.contentView);
         }];
         
         self.currentTemp = [[UILabel alloc] init];

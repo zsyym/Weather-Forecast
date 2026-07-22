@@ -9,7 +9,7 @@
 #import "DailyForecastModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DayCell : UICollectionViewCell
+@interface DayCell : UITableViewCell
 
 @property(nonatomic, strong) DailyForecastModel* model;
 @property(nonatomic, strong) UILabel* weekDay;
@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) UILabel* maxTempC;
 @property(nonatomic, strong) UILabel* minTempC;
 @property(nonatomic, strong) UIImageView* icon;
+@property(nonatomic, strong) UIVisualEffectView* glassView;
 
 @end
 

@@ -44,23 +44,34 @@ NS_ASSUME_NONNULL_BEGIN
     [[NSUserDefaults standardUserDefaults] setObject:cityArray forKey:@"savedCities"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-+(BOOL)addCity:(CityModel *)city {
++(void)addCity:(CityModel *)city {
     NSMutableArray* cityArray = [[[NSUserDefaults standardUserDefaults] objectForKey:@"savedCities"] mutableCopy];
     if (!cityArray) {
         cityArray = [NSMutableArray array];
     }
     for (NSDictionary* dict in cityArray) {
         if ([dict[@"cityName"] isEqualToString:city.cityName]) {
-            return NO;
+            return;
         }
     }
     NSDictionary* dict = @{@"cityLat" : @(city.cityLat) ?: @"", @"cityLon" :@(city.cityLon) ?:@"", @"cityName" : city.cityName ?: @""};
     [cityArray addObject:dict];
     [[NSUserDefaults standardUserDefaults] setObject:cityArray forKey:@"savedCities"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    return YES;
+    return;
 }
-
++(BOOL)isAdd:(CityModel *)city{
+    NSMutableArray* cityArray = [[[NSUserDefaults standardUserDefaults] objectForKey:@"savedCities"] mutableCopy];
+    if (!cityArray) {
+        cityArray = [NSMutableArray array];
+    }
+    for (NSDictionary* dict in cityArray) {
+        if ([dict[@"cityName"] isEqualToString:city.cityName]) {
+            return YES;
+        }
+    }
+    return NO;
+}
 @end
 
 NS_ASSUME_NONNULL_END

@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) CurrentWeatherModel* model;
 @property(nonatomic,strong) UIImageView *backgroundImage;
 @property(nonatomic,strong) UILabel *cityName;
-@property(nonatomic,strong) UILabel *localTime;
 @property(nonatomic,strong) UILabel *currentTemp;
 @property(nonatomic,strong) UILabel *maxAndMinTemp;
 @property(nonatomic, strong) UILabel* conditionText;

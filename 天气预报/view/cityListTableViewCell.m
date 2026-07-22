@@ -13,10 +13,19 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        UIView* bgView = [[UIView alloc] init];
+        bgView = [[UIView alloc]init];
+        bgView.backgroundColor = [UIColor whiteColor];
+        bgView.layer.cornerRadius = 20;
+        bgView.layer.masksToBounds = YES;
+        [self.contentView addSubview:bgView];
+        [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.contentView);
+        }];
         self.backgroundImage = [[UIImageView alloc] init];
         self.backgroundImage.contentMode = UIViewContentModeScaleAspectFill;
         self.backgroundImage.clipsToBounds = YES;
-        [self.contentView addSubview:self.backgroundImage];
+        [bgView addSubview:self.backgroundImage];
         [self.backgroundImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.contentView);
         }];
@@ -24,24 +33,16 @@
         self.cityName = [[UILabel alloc] init];
         self.cityName.font = [UIFont systemFontOfSize:34];
         self.cityName.textColor = [UIColor whiteColor];
-        [self.contentView addSubview:self.cityName];
+        [bgView addSubview:self.cityName];
         [self.cityName mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.equalTo(self.contentView).offset(10);
         }];
         
-        self.localTime = [[UILabel alloc] init];
-        self.localTime.textColor = [UIColor whiteColor];
-        self.localTime.font = [UIFont systemFontOfSize:20];
-        [self.contentView addSubview:self.localTime];
-        [self.localTime mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.cityName);
-            make.top.equalTo(self.cityName.mas_bottom).offset(5);
-        }];
         
         self.currentTemp = [[UILabel alloc] init];
         self.currentTemp.font = [UIFont systemFontOfSize:40];
         self.currentTemp.textColor = [UIColor whiteColor];
-        [self.contentView addSubview:self.currentTemp];
+        [bgView addSubview:self.currentTemp];
         [self.currentTemp mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.cityName);
             make.right.equalTo(self.contentView).offset(-10);
@@ -50,7 +51,7 @@
         self.maxAndMinTemp = [[UILabel alloc] init];
         self.maxAndMinTemp.textColor = [UIColor whiteColor];
         self.maxAndMinTemp.font = [UIFont systemFontOfSize:26];
-        [self.contentView addSubview:self.maxAndMinTemp];
+        [bgView addSubview:self.maxAndMinTemp];
         [self.maxAndMinTemp mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.currentTemp);
             make.bottom.equalTo(self.contentView).offset(-10);
@@ -59,7 +60,7 @@
         self.conditionText = [[UILabel alloc] init];
         self.conditionText.textColor = [UIColor whiteColor];
         self.conditionText.font = [UIFont systemFontOfSize:20];
-        [self.contentView addSubview:self.conditionText];
+        [bgView addSubview:self.conditionText];
         [self.conditionText mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView).offset(10);
             make.bottom.equalTo(self.contentView).offset(-10);
@@ -71,7 +72,6 @@
     _model = model;
     self.backgroundImage.image = [UIImage imageNamed:[self backgroundImageWithCode:model.conditionCode]];
     self.cityName.text = model.cityName;
-    self.localTime.text = model.time;
     self.currentTemp.text = [NSString stringWithFormat:@"%.0f°", model.currentTemp];
     self.maxAndMinTemp.text = [NSString stringWithFormat: @"最高%.0f° 最低%.0f°", model.maxTemp, model.minTemp];
     self.conditionText.text = model.conditionText;

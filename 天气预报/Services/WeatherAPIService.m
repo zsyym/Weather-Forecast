@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString * const WeatherAPIKey = @"55641411f1c044c4bef73729261507";
+static NSString * const WeatherAPIKey = @"4c2ca94c4adb42ed90833902262107";
 static NSString * const WeatherBaseURL = @"https://api.weatherapi.com/v1/forecast.json";
 static NSString * const SearchBaseURL = @"https://api.weatherapi.com/v1/search.json";
 

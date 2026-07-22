@@ -10,6 +10,7 @@
 #import "DetailModel.h"
 #import "CityModel.h"
 #import "SavedCityStore.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface weatherDetailViewController : UIViewController

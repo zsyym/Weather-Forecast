@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
         model.cityName = locationDict[@"name"] ?: @"";
         NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
         model.localTime = locationDict[@"localtime"] ?: @"";
-        formatter.dateFormat = @"yyyy-MM-dd HH:mm";//字符串格式"2026-07-15 14:30"
+        formatter.dateFormat = @"yyyy-MM-dd HH:mm";
         formatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]; // 避免某些地区把24小时制解析错
         NSDate *date = [formatter dateFromString:model.localTime];
         // 转换成只显示"时:分"

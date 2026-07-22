@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,strong) UICollectionView *collectionView;
 @property(nonatomic,strong) NSArray<HourWeatherModel *> *hours;
+@property(nonatomic,strong) UIVisualEffectView* glassView;
 
 @end
 

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailCell : UICollectionViewCell
 
+@property(nonatomic, strong) UIVisualEffectView* glassView;
 @property(nonatomic,strong) UILabel* title;
 @property(nonatomic,strong) UILabel* data;
 @property(nonatomic,strong) UIImageView* imageview;

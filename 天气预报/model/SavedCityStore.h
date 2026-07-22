@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SavedCityStore : NSObject
 
 + (NSArray *)savedCities;
-+ (BOOL)addCity:(CityModel*) city;
++ (void)addCity:(CityModel*) city;
 + (void)removeCity:(CityModel*) city;
-
++ (BOOL)isAdd:(CityModel*) city;
 @end
 
 NS_ASSUME_NONNULL_END

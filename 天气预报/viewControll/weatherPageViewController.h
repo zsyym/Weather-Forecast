@@ -11,6 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface weatherPageViewController : UIPageViewController
 
+@property(nonatomic, assign) NSInteger currentIndex;
+@property(nonatomic, strong) NSMutableArray* controllersArray;
+
 @end
 
 NS_ASSUME_NONNULL_END
