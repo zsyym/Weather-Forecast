@@ -42,7 +42,7 @@
     [self setDetailModel];
 }
 -(void)setDetailModel{
-    NSDictionary* dict = @{@"title":@[@"体感温度",@"紫外线指数",@"风速", @"日出",@"日落",@"降水量",@"能见度",@"湿度",@"平均温度",@"气压"],@"image":@[@"thermometer.variable.and.figure",@"rainbow",@"wind",@"sunrise.fill",@"sunset.fill",@"drop.fill",@"eye.fill",@"humidity",@"chart.line.uptrend.xyaxis",@"gauge.with.dots.needle.bottom.50percent",],@"data":@[@(40),@(self.model.currentModel.uvIndex),@(@(self.model.currentModel.windKph).integerValue),self.model.forecastArray[0].sunrise,self.model.forecastArray[0].sunset,@(self.model.currentModel.precipMm),@(self.model.currentModel.visKm),@(self.model.currentModel.humidity),@(self.model.forecastArray[0].avgTempC),@(self.model.currentModel.pressureMb)],@"dataDescription":@[@"体感温度更高",@"注意防晒",@"",@"",@"",@"",@"",@"",@"",@""]};
+    NSDictionary* dict = @{@"title":@[@"体感温度",@"紫外线指数",@"风速", @"日出",@"日落",@"降水量",@"能见度",@"湿度",@"平均温度",@"气压"],@"image":@[@"thermometer.variable.and.figure",@"rainbow",@"wind",@"sunrise.fill",@"sunset.fill",@"drop.fill",@"eye.fill",@"humidity",@"chart.line.uptrend.xyaxis",@"gauge.with.dots.needle.bottom.50percent",],@"data":@[@(self.model.currentModel.feelsLikeC),@(self.model.currentModel.uvIndex),@(@(self.model.currentModel.windKph).integerValue),self.model.forecastArray[0].sunrise,self.model.forecastArray[0].sunset,@(self.model.currentModel.precipMm),@(self.model.currentModel.visKm),@(self.model.currentModel.humidity),@(self.model.forecastArray[0].avgTempC),@(self.model.currentModel.pressureMb)],@"dataDescription":@[@"体感温度更高",@"注意防晒",@"",@"",@"",@"",@"",@"",@"",@""]};
     self.detailModel = [DetailModel modelWithDictionary:dict];
 }
 -(void)setUpCollectionView {
@@ -81,7 +81,7 @@
     }
     if (indexPath.section == 3) {
         AirCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"airCell" forIndexPath:indexPath];
-        cell.model = self.model.forecastArray[0].airQuality;
+        cell.model = self.model.currentModel.airQuality;
         return cell;
     }
     DetailCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"detailCell" forIndexPath:indexPath];

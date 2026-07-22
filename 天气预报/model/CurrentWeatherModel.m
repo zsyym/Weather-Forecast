@@ -35,9 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
         model.pressureMb = [currentDict[@"pressure_mb"] doubleValue];
         model.precipMm = [currentDict[@"precip_mm"] doubleValue];
         model.humidity = [currentDict[@"humidity"] doubleValue];
-        model.feelsLikeC = [currentDict[@"fellslike_c"] doubleValue];
+        model.feelsLikeC = [currentDict[@"feelslike_c"] doubleValue];
         model.uvIndex = [currentDict[@"uv"] doubleValue];
         model.visKm = [currentDict[@"vis_km"] doubleValue];
+        NSDictionary* air = currentDict[@"air_quality"];
+        model.airQuality = [AirQualityModel modelWithDictionary:air];
         NSDictionary* conditionDict = currentDict[@"condition"];
         if ([conditionDict isKindOfClass:[NSDictionary class]]) {
             model.conditionCode = conditionDict[@"code"];

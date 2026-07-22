@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "AirQualityModel.h"
 #import "HourWeatherModel.h"
-#import "AirQualityModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,7 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *icon;
 @property (nonatomic, copy) NSString *sunrise;
 @property (nonatomic, copy) NSString *sunset;
-@property (nonatomic, strong, nullable) AirQualityModel *airQuality;
 @property (nonatomic, strong) NSArray<HourWeatherModel *> *hours;
 
 +(instancetype) modelWithDictionary:(NSDictionary*)dict;

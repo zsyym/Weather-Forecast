@@ -32,8 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
         model.sunrise = astro[@"sunrise"] ?: @"";
         model.sunset = astro[@"sunset"] ?: @"";
     }
-    NSDictionary* air = dict[@"air_quality"];
-    model.airQuality = [AirQualityModel modelWithDictionary:air];
     NSMutableArray* hourArray = [NSMutableArray array];
     NSArray *hours = dict[@"hour"];
     if ([hours isKindOfClass:[NSArray class]]) {

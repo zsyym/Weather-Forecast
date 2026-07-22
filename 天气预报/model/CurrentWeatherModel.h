@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "AirQualityModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CurrentWeatherModel : NSObject
@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) double pressureMb;    //气压
 @property (nonatomic, assign) double uvIndex;//紫外线
 @property (nonatomic, assign) NSInteger humidity;//湿度
+@property (nonatomic, strong, nullable) AirQualityModel *airQuality;
 
 + (instancetype)modelWithDictionary:(NSDictionary *)dict;
 @end
